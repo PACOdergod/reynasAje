@@ -65,7 +65,10 @@ class Casilla extends StatelessWidget {
     return Container(
       height: 50,
       width: 50,
-      decoration: BoxDecoration(border: Border.all(width: 2.0), color: color),
+      decoration: BoxDecoration(
+        border: Border.all(width: 2.0), 
+        color: i == index ? Colors.red : color
+      ),
       child: Text(this.index.toString()),
     );
   }
