@@ -12,7 +12,7 @@ class _TableroState extends State<Tablero> {
   Widget build(BuildContext context) {
     return Container(
       // TODO: las filas y las columnas estan alreves
-      child: _tablero(4, 4),
+      child: _tablero(6, 5),
     );
   }
 }
@@ -22,22 +22,22 @@ Widget _tablero(int filas, int columnas) {
   int fcol;
   //TODO: esta solucion es muy complicada hay que optimisarla
   for (var i = 0; i < filas; i++) {
-    //TODO: se debe crear la lista del tamaño final
-    var lista = [];
+    //TODO: se debe crear la listaIndices del tamaño final
+    var listaIndices = [];
     // print(i);
 
     for (var o = 1; o <= columnas; o++) {
       if (fcol == null) {
         fcol = 0;
       }
-      lista.add(o + fcol);
+      listaIndices.add(o + fcol);
       if (o == columnas) {
-        fcol = lista.last;
+        fcol = listaIndices.last;
       }
     }
-    // print(lista);
+    // print(listaIndices);
 
-    var widgetColumna = _columna(columnas, lista);
+    var widgetColumna = _columna(columnas, listaIndices, i);
     widgetColumnas.add(widgetColumna);
   }
 
@@ -46,30 +46,39 @@ Widget _tablero(int filas, int columnas) {
   );
 }
 
-Widget _columna(int columnas, List lista) {
+Widget _columna(int columnas, List listaIndices, int fila) {
   return Column(
-    children: List.generate(columnas, (i) => Casilla(lista[i])),
+    children: List.generate(columnas, (i) => Casilla(listaIndices[i], i, fila)),
   );
 }
 
 class Casilla extends StatelessWidget {
   final int index;
+  final int indexF;
+  final int indexC;
   final Color color;
 
-  Casilla(this.index, {this.color = Colors.white});
+  Casilla(this.index,this.indexF,this.indexC, {this.color = Colors.white});
 
   @override
   Widget build(BuildContext context) {
     final i = Provider.of<TableroProvider>(context).currentIndex;
 
     return Container(
-      height: 50,
-      width: 50,
+      padding: EdgeInsets.all(5),
+      // height: 50,
+      // width: 50,
+      // TODO: hay problemas para que la casillas tengan el mismo tamaño
       decoration: BoxDecoration(
         border: Border.all(width: 2.0), 
         color: i == index ? Colors.red : color
       ),
-      child: Text(this.index.toString()),
+      child: Column(
+        children: [
+          Text("index: ${this.index}"),
+          Text("fila: ${this.indexF}"),
+          Text("columna: ${this.indexC}")
+      ],),
     );
   }
 }
