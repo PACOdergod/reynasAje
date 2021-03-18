@@ -12,7 +12,7 @@ class _TableroState extends State<Tablero> {
   Widget build(BuildContext context) {
     return Container(
       // TODO: las filas y las columnas estan alreves
-      child: _tablero(6, 5),
+      child: _tablero(5, 5),
     );
   }
 }
@@ -66,9 +66,6 @@ class Casilla extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.all(5),
-      // height: 50,
-      // width: 50,
-      // TODO: hay problemas para que la casillas tengan el mismo tamaño
       decoration: BoxDecoration(
         border: Border.all(width: 2.0), 
         color: i == index ? Colors.red : color
@@ -76,8 +73,10 @@ class Casilla extends StatelessWidget {
       child: Column(
         children: [
           Text("index: ${this.index}"),
+          Text("columna: ${this.indexC}"),
           Text("fila: ${this.indexF}"),
-          Text("columna: ${this.indexC}")
+          Text("b: ${this.indexC - this.indexF}"),
+          Text("b: ${this.indexF + this.indexC}")
       ],),
     );
   }

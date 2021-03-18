@@ -1,4 +1,4 @@
-import 'package:ajedre/src/first_page.dart';
+import 'package:ajedre/src/home_page.dart';
 import 'package:flutter/material.dart';
  
 void main() => runApp(MyApp());

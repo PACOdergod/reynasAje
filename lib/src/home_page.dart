@@ -11,15 +11,17 @@ class FirstPage extends StatelessWidget {
       create: (context) => TableroProvider(),
       child: Scaffold(
         appBar: AppBar(title: Text("Analizar tableros"),),
-        body: Container(
-          child: Column( 
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [ 
-              Center(child: Tablero()), 
-              SizedBox(height: 50),
-              BotonIniciar()
-            ],
-        ),),
+        body: SingleChildScrollView(
+          child: Container(
+            child: Column( 
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [ 
+                Center(child: Tablero()), 
+                SizedBox(height: 50),
+                BotonIniciar()
+              ],
+          ),),
+        ),
       ),
     );
   }
