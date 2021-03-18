@@ -1,5 +1,4 @@
-import 'package:ajedre/src/boton_iniciar.dart';
-import 'package:ajedre/src/tablero.dart';
+import 'package:ajedre/src/first_page.dart';
 import 'package:flutter/material.dart';
  
 void main() => runApp(MyApp());
@@ -9,22 +8,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(title: Text("Analizar tableros"),),
-        body: _inicio(),
-      ),
+      home: FirstPage()
     );
   }
-}
-//  CrearTablero()
-Widget _inicio(){
-  return Container(child: 
-    Column(children: [ 
-      Center(child: Tablero()), 
-      SizedBox(height: 50),
-      BotonIniciar()
-    ],
-    crossAxisAlignment: CrossAxisAlignment.start,
-  ),);
 }
 
