@@ -8,7 +8,7 @@ class TableroProvider with ChangeNotifier {
   set currentIndex(int index) {
     this._currentIndex = index;
 
-    print(index);
+    // print(index);
 
     notifyListeners();
   }

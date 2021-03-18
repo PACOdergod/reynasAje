@@ -1,26 +1,25 @@
+import 'package:ajedre/src/providers/tablero_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+class BotonIniciar extends StatefulWidget {
+  @override
+  _BotonIniciarState createState() => _BotonIniciarState();
+}
 
-class BotonIniciar extends StatelessWidget {
+class _BotonIniciarState extends State<BotonIniciar> {
   int numero = 0;
-  
-  // @override
-  // void initState() {
-  //   super.initState();
-
-  //   // indexController.addListener(() {
-  //   //   Provider.of<TableroProvider>(context, listen: false).currentIndex = numero;
-
-  //   // });
-  // }
 
   @override
   Widget build(BuildContext context) {
+    final tableroProvider = Provider.of<TableroProvider>(context);
+
     return Container(
       child: ElevatedButton(
           onPressed: () {
             numero += 1;
-            print(numero);
+            // print(numero);
+            tableroProvider.currentIndex = numero;
           },
           child: Text("iniciar calculo")),
     );

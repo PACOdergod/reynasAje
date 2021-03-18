@@ -1,4 +1,6 @@
+import 'package:ajedre/src/providers/tablero_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Tablero extends StatefulWidget {
   @override
@@ -8,9 +10,9 @@ class Tablero extends StatefulWidget {
 class _TableroState extends State<Tablero> {
   @override
   Widget build(BuildContext context) {
-    return  Container(
-        // TODO: las filas y las columnas estan alreves
-        child: _tablero(4, 4),
+    return Container(
+      // TODO: las filas y las columnas estan alreves
+      child: _tablero(4, 4),
     );
   }
 }
@@ -50,16 +52,6 @@ Widget _columna(int columnas, List lista) {
   );
 }
 
-// Widget _casilla(int index, {Color color = Colors.white}) {
-//   final pageViewIndex = Provider.of<SliderModel>(context).currentPage;
-//   return Container(
-//     height: 50,
-//     width: 50,
-//     decoration: BoxDecoration(border: Border.all(width: 2.0), color: color),
-//     child: Text(index.toString()),
-//   );
-// }
-
 class Casilla extends StatelessWidget {
   final int index;
   final Color color;
@@ -68,8 +60,7 @@ class Casilla extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-  // final int casillaIndex = Provider.of<TableroProvider>(context).currentIndex;
+    final i = Provider.of<TableroProvider>(context).currentIndex;
 
     return Container(
       height: 50,
